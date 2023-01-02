@@ -9,7 +9,7 @@ class cruiseShip {
 }
 
 setSail() {
-    //this.currentPort !== null ? this.previousPort = this.currentPort : this.previousPort = this.startingPort;
+    this.previousPort = this.currentPort
     this.currentPort = null;
     } 
 

@@ -12,6 +12,16 @@ it('sets the port property of the ship', () => {
     expect(ship.startingPort).toBe(port);
 
 });
+
+it('sets the preivous port property of the ship to null', () => {
+    const port = new Port('Rotterdam')
+    const ship = new cruiseShip(port)
+    expect(ship.previousPort).toBe(null);
+
+});
+
+
+
 it('sets the initial number of passengers on the ship to 0', () => {
     const port = new Port('Amsterdam')
     const ship = new cruiseShip(port)
