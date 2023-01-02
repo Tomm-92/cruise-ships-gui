@@ -1,3 +1,5 @@
+const Port = require('../src/Port');
+
 class cruiseShip {
     constructor(port) {
     this.startingPort = port;
@@ -7,9 +9,16 @@ class cruiseShip {
 }
 
 setSail() {
-    this.currentPort !== null ? this.previousPort = this.currentPort : this.previousPort = this.startingPort;
+    //this.currentPort !== null ? this.previousPort = this.currentPort : this.previousPort = this.startingPort;
     this.currentPort = null;
-    }
+    } 
+
+
+dock(portName) {
+    this.currentPort = portName
+    console.log(`The ship has docked in ${portName}`)
+}
+
 }
 
 module.exports = cruiseShip
