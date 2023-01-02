@@ -1,0 +1,19 @@
+{
+  "name": "cruise-ships",
+  "version": "1.0.0",
+  "description": "command shift cruise ships OOP project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "cruise",
+    "ships",
+    "OOP"
+  ],
+  "author": "TMW",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
