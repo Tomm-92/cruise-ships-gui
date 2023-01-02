@@ -2,7 +2,7 @@ const Port = require('../src/Port');
 
 class cruiseShip {
     constructor(port) {
-    this.startingPort = port;
+    //this.startingPort = port;
     this.currentPort = port;
     this.previousPort = null;
     this.passengers = 0;

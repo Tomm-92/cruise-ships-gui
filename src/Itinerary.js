@@ -1,5 +1,5 @@
 class Intinerary {
-    constructor(ports) {
+    constructor(ports=[]) {
         this.ports = ports
     }
 }

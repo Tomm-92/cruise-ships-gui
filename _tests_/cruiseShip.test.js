@@ -1,5 +1,6 @@
 /* globals describe it expect */
 const cruiseShip = require('../src/cruiseShip');
+const Intinerary = require('../src/Itinerary');
 const Port = require('../src/Port');
 
 describe('cruiseShip constuctor', () => {
@@ -7,9 +8,11 @@ describe('cruiseShip constuctor', () => {
     expect(new cruiseShip()).toBeInstanceOf(Object);
 });
 it('sets the port property of the ship', () => {
-    const port = new Port('Rotterdam')
-    const ship = new cruiseShip(port)
-    expect(ship.startingPort).toBe(port);
+    const currentPort = new Port('Rotterdam')
+    const preivousPort = null
+    const route = new Intinerary([currentPort, preivousPort])
+    const ship = new cruiseShip(route)
+    expect(ship.currentPort).toBe(route);
 
 });
 
@@ -19,8 +22,6 @@ it('sets the preivous port property of the ship to null', () => {
     expect(ship.previousPort).toBe(null);
 
 });
-
-
 
 it('sets the initial number of passengers on the ship to 0', () => {
     const port = new Port('Amsterdam')
@@ -34,7 +35,9 @@ describe('setSail', () => {
     const port = new Port('Cartagena')
     const ship = new cruiseShip(port)
     ship.setSail()
+    expect(ship.previousPort).toBe(port)
     expect(ship.currentPort).toBeFalsy();
+   
 });
 });
 
