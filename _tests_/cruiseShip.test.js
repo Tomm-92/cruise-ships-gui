@@ -51,15 +51,22 @@ describe('setSail', () => {
 
 describe('dock', () => {
     it('allows the ship to dock at a different port', () => {
-    const dover = new Port('Dover');
-    const calais = new Port('Calais');
-    const itinerary = new Intinerary([dover, calais])
+    const rotterdam = new Port('Rotterdam');
+    const miami = new Port('Miami');
+    const monaco = new Port('Monaco');
+    const itinerary = new Intinerary([rotterdam, miami, monaco])
     const ship = new cruiseShip(itinerary);
       
     ship.setSail();
     ship.dock();
       
-    expect(ship.currentPort).toBe(calafs);
+    expect(ship.currentPort).toBe(miami);
+
+    ship.setSail();
+    ship.dock();
+
+    expect(ship.currentPort).toBe(monaco);
+
 
  /*const currentPort = new Port('Rotterdam')
     const preivousPort = new Port('Miami')

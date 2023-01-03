@@ -18,7 +18,7 @@ setSail() {
 dock() {
     const itinerary = this.itinerary
     const previousPortIndex = itinerary.ports.indexOf(this.previousPort)
-    console.log(previousPortIndex)
+    this.currentPort = itinerary.ports[previousPortIndex + 1];
     //this.currentPort = this.itinerary.ports[1]
     //console.log(`The ship has docked in ${itinerary.ports[1]}`)
 }
