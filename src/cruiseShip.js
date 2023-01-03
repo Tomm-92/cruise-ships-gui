@@ -1,11 +1,12 @@
 const Port = require('../src/Port');
 
 class cruiseShip {
-    constructor(port) {
-    //this.startingPort = port;
-    this.currentPort = port;
+    constructor(itinerary) {
+    this.itinerary = itinerary
+    this.currentPort = itinerary.ports[0];
     this.previousPort = null;
-    this.passengers = 0;
+    //this.passengers = 0;
+    //this.startingPort = port;
 }
 
 setSail() {
@@ -14,9 +15,12 @@ setSail() {
     } 
 
 
-dock(portName) {
-    this.currentPort = portName
-    console.log(`The ship has docked in ${portName}`)
+dock() {
+    const itinerary = this.itinerary
+    const previousPortIndex = itinerary.ports.indexOf(this.previousPort)
+    console.log(previousPortIndex)
+    //this.currentPort = this.itinerary.ports[1]
+    //console.log(`The ship has docked in ${itinerary.ports[1]}`)
 }
 
 }

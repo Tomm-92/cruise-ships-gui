@@ -1,6 +1,6 @@
 class Intinerary {
     constructor(ports=[]) {
-        this.ports = ports
+        this.ports = ports;
     }
 }
 

@@ -1,12 +1,16 @@
 const Intinerary = require('../src/Itinerary');
+const Port = require('../src/Port');
 
 describe('Intinerary constructor function', () => {
     it('can be instantiated', () => {
         expect(new Intinerary()).toBeInstanceOf(Object);
     });
-    it('has a port property', () => {
-        const intinerary = new Intinerary('Liverpool')
-        expect(intinerary.ports).toBe('Liverpool')
+    it('can have ports', () => {
+        const nice = new Port('Nice')
+        const monaco = new Port('Monaco')
+        
+        const intinerary = new Intinerary([nice, monaco])
+        expect(intinerary.ports).toEqual([nice, monaco])
     }
     )
 });
