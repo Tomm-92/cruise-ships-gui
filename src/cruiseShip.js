@@ -5,6 +5,7 @@ class cruiseShip {
     this.itinerary = itinerary
     this.currentPort = itinerary.ports[0];
     this.previousPort = null;
+    this.currentPort.addShip(this)
     //this.passengers = 0;
     //this.startingPort = port;
 }
@@ -12,8 +13,6 @@ class cruiseShip {
 setSail() {
     const itinerary = this.itinerary
     const currentPortIndex = itinerary.ports.indexOf(this.currentPort)
-    const length = itinerary.ports.length
-    console.log(length)
 
     if (currentPortIndex >= (itinerary.ports.length -1)) {
         throw new Error('End of itinerary reached');

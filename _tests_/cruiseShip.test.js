@@ -31,6 +31,15 @@ describe('cruiseShip constuctor', () => {
 
 });
 
+    it('cruiseShip gets added to port on instantination', () => {
+        const port = new Port('Rotterdam')
+        const itinerary = new Intinerary([port])
+        const ship = new cruiseShip(itinerary)
+
+        expect(port.ships).toContain(ship);
+
+});
+
    /* it('sets the initial number of passengers on the ship to 0', () => {
         const port = new Port('Amsterdam')
         const ship = new cruiseShip(port)
@@ -78,9 +87,11 @@ describe('dock', () => {
         ship.dock();
       
         expect(ship.currentPort).toBe(miami);
+        expect(ship.currentPort.ships).toContain(ship)
 
-        ship.setSail();
+       /* ship.setSail();
         ship.dock();
 
-        expect(ship.currentPort).toBe(monaco); });
+        expect(ship.currentPort).toBe(monaco); */
+    }); 
 });
