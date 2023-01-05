@@ -3,7 +3,7 @@ const cruiseShip = require('../src/cruiseShip');
 class Port {
     constructor(name, ships=[]) {
         this.name = name
-        this.ships = []
+        this.ships = ships
     }
 
 addShip(ship) {

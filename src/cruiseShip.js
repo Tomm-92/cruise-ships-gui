@@ -19,6 +19,7 @@ setSail() {
     }
          
     this.previousPort = this.currentPort
+    this.currentPort.removeShip(this)
     this.currentPort = null;
     } 
 
@@ -27,6 +28,8 @@ dock() {
     const itinerary = this.itinerary
     const previousPortIndex = itinerary.ports.indexOf(this.previousPort)
     this.currentPort = itinerary.ports[previousPortIndex + 1];
+    this.currentPort.addShip(this);
+
     //console.log(`The ship has docked in ${itinerary.ports[1]}`)
 }
 

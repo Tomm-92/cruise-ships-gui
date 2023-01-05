@@ -59,6 +59,7 @@ describe('setSail', () => {
         
         expect(ship.previousPort).toBe(port1)
         expect(ship.currentPort).toBeFalsy();
+        expect(port1.ships).not.toContain(ship);
 
 });
     it('can\'t sail further than its itinerary', () => {
