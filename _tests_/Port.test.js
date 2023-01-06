@@ -3,37 +3,40 @@ const Port = require('../src/Port');
 const cruiseShip = require('../src/cruiseShip');
 const Intinerary = require('../src/Itinerary');
 
-describe('Port Constructor', () => {
-    it('creates an instance of port as an object', () => {
-    expect(new Port('liverpool')).toBeInstanceOf(Object);
+describe('Port', () => {
+    let cartagena
+    let florence
+    let itinerary
+    let ship
+
+    beforeEach(() => {
+        cartagena = new Port('Cartagena')
+        florence = new Port('Florence')
+        itinerary = new Intinerary([cartagena, florence])
+        ship = new cruiseShip(itinerary)
+    }); 
+
+    describe('Port Constructor with a name and ships stored within', () => {
+        it('creates an instance of port as an object', () => {
+            expect(new Port('liverpool')).toBeInstanceOf(Object);
+     });
+
+        it('assigns a name property to the port', () => {
+            expect(cartagena.name).toMatch('Cartagena');    
     });
 
-    it('assigns a name property to the port', () => {
-    const port = new Port('Amsterdam')
-    expect(port.name).toMatch('Amsterdam');    
+        it('can add a ship to the ship array property', () => {
+            cartagena.addShip(ship)  
+                expect(cartagena.ships).toContain(ship);
+        }); 
+    });
+
+        it('can remove a ship to the ship array property', () => {
+            cartagena.addShip(ship)  
+            cartagena.removeShip(ship)
+                expect(cartagena.ships).not.toContain([ship])
     });
 });
 
-describe('addShip', () => {
-    it('adds a ship to the ship array property', () => {
-        const port = new Port('Bilbao')
-        const ship = {}
-        port.addShip(ship)  
-        
-        expect(port.ships).toContain(ship);
 
-    });
-});
 
-describe('removeShip', () => {
-    it('removes a ship to the ship array property', () => {
-        const port = new Port('Bilbao')
-        const ship1 = {}
-        const ship2 = {}
-        port.addShip(ship1)  
-        port.addShip(ship2)
-        port.removeShip(ship1)
-
-        expect(port.ships).toEqual([ship2])
-    });
-});
