@@ -1,7 +1,7 @@
 /* globals describe it expect */
-const cruiseShip = require('../src/cruiseShip');
+const CruiseShip = require('../src/cruiseShip');
 const Intinerary = require('../src/Itinerary');
-const Port = require('../src/Port');
+//const Port = require('../src/Port');
 
 describe('Ship', () => {
     let cartagena
@@ -25,7 +25,7 @@ describe('Ship', () => {
         };
 
         itinerary = new Intinerary([cartagena, florence]);
-        ship = new cruiseShip(itinerary);
+        ship = new CruiseShip(itinerary);
     }); 
 
     describe('cruiseShip constuctor with ports and itinerary', () => {

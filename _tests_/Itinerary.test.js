@@ -1,5 +1,5 @@
 const Intinerary = require('../src/Itinerary');
-const Port = require('../src/Port');
+// const Port = require('../src/Port');
 
 describe('Intinerary constructor function', () => {
     it('can be instantiated', () => {

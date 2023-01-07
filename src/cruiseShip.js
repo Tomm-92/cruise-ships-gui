@@ -1,6 +1,6 @@
 const Port = require('../src/Port');
 
-class cruiseShip {
+class CruiseShip {
     constructor(itinerary) {
     this.itinerary = itinerary
     this.currentPort = itinerary.ports[0];
@@ -35,4 +35,4 @@ dock() {
 
 }
 
-module.exports = cruiseShip
+module.exports = CruiseShip
