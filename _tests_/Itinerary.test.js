@@ -6,9 +6,8 @@ describe('Intinerary constructor function', () => {
         expect(new Intinerary()).toBeInstanceOf(Object);
     });
     it('can have ports', () => {
-        const nice = new Port('Nice')
-        const monaco = new Port('Monaco')
-        
+        const nice = jest.fn()
+        const monaco = jest.fn()
         const intinerary = new Intinerary([nice, monaco])
         expect(intinerary.ports).toEqual([nice, monaco])
     }
