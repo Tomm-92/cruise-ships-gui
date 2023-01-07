@@ -6,14 +6,26 @@ const Port = require('../src/Port');
 describe('Ship', () => {
     let cartagena
     let florence
-    let itinerary
-    let ship
+    //let itinerary
+    //let ship
 
     beforeEach(() => {
-        cartagena = new Port('Cartagena')
-        florence = new Port('Florence')
-        itinerary = new Intinerary([cartagena, florence])
-        ship = new cruiseShip(itinerary)
+        cartagena = {
+            addShip: jest.fn(),
+            removeShip: jest.fn(),
+            name: 'Dover',
+            ships: []
+        };
+
+        florence = {
+            addShip: jest.fn(),
+            removeShip: jest.fn(),
+            name: 'Calais',
+            ships: []
+        };
+
+        itinerary = new Intinerary([cartagena, florence]);
+        ship = new cruiseShip(itinerary);
     }); 
 
     describe('cruiseShip constuctor with ports and itinerary', () => {
@@ -25,15 +37,15 @@ describe('Ship', () => {
             expect(ship.previousPort).toBe(null);
     });
         it('cruiseShip gets added to port on instantination', () => {
-            expect(ship.currentPort.ships).toContain(ship);
+            expect(cartagena.addShip).toHaveBeenCalledWith(ship);
     });
-        it('can set sail sea', () => {
+        it('can set sail', () => {
         
         ship.setSail()
         
         expect(ship.previousPort).toBe(cartagena)
         expect(ship.currentPort).toBeFalsy();
-        expect(cartagena.ships).not.toContain(ship);
+        expect(cartagena.removeShip).toHaveBeenCalledWith(ship);
     });
     it('can\'t sail further than its itinerary', () => {
         ship.setSail();
@@ -47,7 +59,7 @@ describe('Ship', () => {
         ship.dock();
       
         expect(ship.currentPort).toBe(florence);
-        expect(ship.currentPort.ships).toContain(ship)
+        expect(florence.addShip).toHaveBeenCalledWith(ship);
     }); 
     });
 })

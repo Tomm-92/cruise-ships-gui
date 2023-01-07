@@ -33,12 +33,10 @@ describe('Port Constructor with a name and ships stored within', () => {
                 expect(cartagena.ships).not.toContain([ship])
     });
 
-    /*it('throws error if no ship to remove', () => {
-        port.addShip(ship);
-        port.removeShip(ship);
-
-        expect(() => port.removeShip(ship)).toThrowError('No ships currently at dock'); */
+        it('throws error if no ship to remove', () => {
+            cartagena.addShip(ship);
+            cartagena.removeShip(ship);
+                expect(() => cartagena.removeShip(ship)).toThrowError('No ships with that name are currently docked');
 });
 });
-
-
+});
