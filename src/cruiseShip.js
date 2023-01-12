@@ -1,5 +1,3 @@
-const Port = require('../src/Port');
-
 class CruiseShip {
   constructor(itinerary) {
     this.itinerary = itinerary;

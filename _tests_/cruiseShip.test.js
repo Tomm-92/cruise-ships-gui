@@ -33,12 +33,15 @@ describe('Ship', () => {
       expect(ship).toBeInstanceOf(Object);
       expect(ship.currentPort).toBe(cartagena);
     });
+
     it('sets the preivous port property of the ship to null', () => {
       expect(ship.previousPort).toBe(null);
     });
+
     it('cruiseShip gets added to port on instantination', () => {
       expect(cartagena.addShip).toHaveBeenCalledWith(ship);
     });
+
     it('can set sail', () => {
       ship.setSail();
 
@@ -46,6 +49,7 @@ describe('Ship', () => {
       expect(ship.currentPort).toBeFalsy();
       expect(cartagena.removeShip).toHaveBeenCalledWith(ship);
     });
+
     it("can't sail further than its itinerary", () => {
       ship.setSail();
       ship.dock();
