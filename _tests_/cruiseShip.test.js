@@ -1,26 +1,24 @@
 /* globals describe it expect */
-const CruiseShip = require("../src/cruiseShip");
-//const Intinerary = require("../src/Itinerary");
-//const Port = require('../src/Port');
+const CruiseShip = require('../src/cruiseShip');
 
-describe("Ship", () => {
+describe('Ship', () => {
   let cartagena;
   let florence;
-  //  let itinerary;
-  //  let ship;
+  let itinerary;
+  let ship;
 
   beforeEach(() => {
     cartagena = {
       addShip: jest.fn(),
       removeShip: jest.fn(),
-      name: "Dover",
+      name: 'Dover',
       ships: [],
     };
 
     florence = {
       addShip: jest.fn(),
       removeShip: jest.fn(),
-      name: "Calais",
+      name: 'Calais',
       ships: [],
     };
 
@@ -30,18 +28,18 @@ describe("Ship", () => {
     ship = new CruiseShip(itinerary);
   });
 
-  describe("cruiseShip constuctor with ports and itinerary", () => {
-    it("can be instantiated", () => {
+  describe('cruiseShip constuctor with ports and itinerary', () => {
+    it('can be instantiated', () => {
       expect(ship).toBeInstanceOf(Object);
       expect(ship.currentPort).toBe(cartagena);
     });
-    it("sets the preivous port property of the ship to null", () => {
+    it('sets the preivous port property of the ship to null', () => {
       expect(ship.previousPort).toBe(null);
     });
-    it("cruiseShip gets added to port on instantination", () => {
+    it('cruiseShip gets added to port on instantination', () => {
       expect(cartagena.addShip).toHaveBeenCalledWith(ship);
     });
-    it("can set sail", () => {
+    it('can set sail', () => {
       ship.setSail();
 
       expect(ship.previousPort).toBe(cartagena);
@@ -52,10 +50,10 @@ describe("Ship", () => {
       ship.setSail();
       ship.dock();
 
-      expect(() => ship.setSail()).toThrowError("End of itinerary reached");
+      expect(() => ship.setSail()).toThrowError('End of itinerary reached');
     });
 
-    it("allows the ship to dock at a different port", () => {
+    it('allows the ship to dock at a different port', () => {
       ship.setSail();
       ship.dock();
 
