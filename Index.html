@@ -6,18 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cruise Ships</title>
     <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <div id="viewport">
-
+      <div id="ports"></div>
     </div>
-    <script src ="./src/controller.js"></script> 
-    <script> const controller = new Controller() </script> 
+    <script src="./src/Controller.js"></script>
+    <script src="./src/Itinerary.js"></script>
+    <script src="./src/Port.js"></script>
+
+    <script>
+      const controller = new Controller();
+      const itinerary = new Intinerary([
+        new Port('Amsterdam'),
+        new Port('Cartagena'),
+        new Port('Barcelona'),
+      ]);
+      controller.renderPorts(itinerary.ports);
+    </script>
   </body>
 
-
-<script>
-
-</script>
+  <script></script>
 </html>

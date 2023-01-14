@@ -1,21 +1,26 @@
-class Port {
-  constructor(name, ships = []) {
-    this.name = name;
-    this.ships = ships;
-  }
+(function exportPort() {
+  class Port {
+    constructor(name) {
+      this.name = name;
+      this.ships = [];
+    }
 
-  addShip(ship) {
-    this.ships.push(ship);
-  }
+    addShip(ship) {
+      this.ships.push(ship);
+    }
 
-  removeShip(ship) {
-    const index = this.ships.indexOf(ship);
-    if (index !== -1) {
-      this.ships.splice(index, 1);
-    } else {
-      throw new Error('No ships with that name are currently docked');
+    removeShip(ship) {
+      const shipIndex = this.ships.indexOf(ship);
+      if (shipIndex >= 0) {
+        this.ships.splice(shipIndex, 1);
+      } else {
+        throw new Error('No ships currently at dock');
+      }
     }
   }
-}
-
-module.exports = Port;
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = Port;
+  } else {
+    window.Port = Port;
+  }
+})();
