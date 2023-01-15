@@ -1,7 +1,8 @@
 (function exportController() {
   class Controller {
-    constructor() {
-      this.initialiseSea();
+    constructor(ship) {
+      this.ship = ship;
+      this.initialiseSea()         
     }
 
     initialiseSea() {
@@ -27,9 +28,21 @@
         const portsElementWidth = parseInt(portsElement.style.width, 10);
         portsElement.style.width = `${portsElementWidth + 256}px`;
       });
- 
     }
-  }
+
+    //this for each works by iterating over the ports passed in to the renderPorts function and creates a new div which is added to the DOM (can see in browser console)
+    // the newPortElement is given a class name port and the data tags are then that ports name and its index in the array
+
+renderShip() {
+  const ship = this.ship;
+  const shipPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
+  const portElement = document.querySelector(`[data-port-index='${shipPortIndex}']`);
+  const shipElement = document.querySelector('#ship');
+  shipElement.style.top = `${portElement.offsetTop + 28}px`;
+  shipElement.style.left = `${portElement.offsetLeft - 35}px`;
+}
+  }  
+
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = Controller;
   } else {
