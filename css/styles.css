@@ -22,7 +22,7 @@ body {
 
 }
 
-.sailButton {
+#sailButton {
   border: 0;
   background-color: black;
   color: white;
@@ -31,8 +31,14 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 120%;
   font-family: 'Press Start 2P', cursive;
+}
+
+#sailButton:focus {
+  background-color: #d8040f;
+  border-bottom-width: 0;
+  padding-top: 14px;
 }
 
 

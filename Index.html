@@ -15,7 +15,7 @@
     <div id="viewport">
       <div id="ports"></div>
       <div id="ship"></div>
-      <button class="sailButton"> Set Sail!</button>
+      <button id="sailButton"> Set Sail!</button>
     </div>
     <script src="./src/Controller.js"></script>
     <script src="./src/Itinerary.js"></script>
@@ -31,7 +31,7 @@
       const ship = new CruiseShip (itinerary)
       const controller = new Controller(ship);
       controller.renderPorts(itinerary.ports);
-     controller.renderShip(ship)
+     controller.renderShip()
     </script>
   </body>
 
