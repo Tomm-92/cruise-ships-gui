@@ -19,7 +19,6 @@ body {
   position: relative;
   overflow-x: auto;
   background-image: url('../images/water0.png');
-
 }
 
 #sailButton {
@@ -41,7 +40,6 @@ body {
   padding-top: 14px;
 }
 
-
 #ports {
   margin-top: 96px;
   display: flex;
@@ -55,14 +53,19 @@ body {
 }
 
 #ship {
-  
   background-image: url('../images/ship.png');
   position: absolute;
   height: 64px;
   width: 128px;
 }
 
-
-
-
-
+#message {
+  border: 0;
+  background-color: white;
+  color: black;
+  font-family: inherit;
+  padding: 5px 10px;
+  position: absolute;
+  width: 120%;
+  font-family: 'Press Start 2P', cursive;
+}

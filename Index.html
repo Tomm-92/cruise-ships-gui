@@ -3,7 +3,7 @@
   <head>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-      </style>
+    </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +15,7 @@
     <div id="viewport">
       <div id="ports"></div>
       <div id="ship"></div>
-      <button id="sailButton"> Set Sail!</button>
+      <button id="sailButton">Set Sail!</button>
     </div>
     <script src="./src/Controller.js"></script>
     <script src="./src/Itinerary.js"></script>
@@ -28,10 +28,12 @@
         new Port('Cartagena'),
         new Port('Barcelona'),
       ]);
-      const ship = new CruiseShip (itinerary)
+      const ship = new CruiseShip(itinerary);
       const controller = new Controller(ship);
       controller.renderPorts(itinerary.ports);
-     controller.renderShip()
+      controller.renderShip();
+      const message = 'string'
+      controller.renderMessage(message);
     </script>
   </body>
 
