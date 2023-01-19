@@ -21,6 +21,7 @@ body {
   background-image: url('../images/water0.png');
 }
 
+
 #sailButton {
   border: 0;
   background-color: black;
@@ -30,7 +31,7 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 120%;
+  width: 100%;
   font-family: 'Press Start 2P', cursive;
 }
 
@@ -61,11 +62,25 @@ body {
 
 #message {
   border: 0;
-  background-color: white;
+  background-color:white;
   color: black;
   font-family: inherit;
   padding: 5px 10px;
   position: absolute;
-  width: 120%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-family: 'Press Start 2P', cursive;
+}
+
+#headsUpDisplay {
+  border: 0;
+  background-color: black;
+  color: white;
+  font-family: inherit;
+  padding: 5px 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
   font-family: 'Press Start 2P', cursive;
 }

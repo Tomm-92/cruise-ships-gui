@@ -57,8 +57,12 @@
         `[data-port-index='${nextPortIndex}']`
       );
       if (!nextPortElement) {
-        return alert('End of the line!');
-      }
+        this.renderMessage('End of the line!');
+        return 0;
+      } else {
+
+      this.renderMessage(`Now departing ${ship.currentPort.name}`);
+    }
 
       const shipElement = document.querySelector('#ship');
       const sailInterval = setInterval(() => {
@@ -66,34 +70,35 @@
         if (shipLeft === nextPortElement.offsetLeft - 35) {
           ship.setSail();
           ship.dock();
+          this.renderMessage(`Welcome to ${ship.currentPort.name}`);
           clearInterval(sailInterval);
         }
-
         shipElement.style.left = `${shipLeft + 1}px`;
       }, 20);
     }
 
-renderMessage() {
-  const messagesElement = document.querySelector('#message');
-  messagesElement.style.width = '0px';
-
+renderMessage(message) {
   const messageElement = document.createElement('div');
-  messageElement.className = 'message';
-  messageElement.appendChild(messageElement);
-  const messagesElementWidth = parseInt(portsElement.style.width, 10);
-  messagesElement.style.width = `${portsElementWidth + 256}px`;
+  messageElement.id = 'message';
+  messageElement.innerHTML = message;
+  
+  const viewport = document.querySelector('#viewport');
+  viewport.appendChild(messageElement);
+  setTimeout(() => {
+    viewport.removeChild(messageElement);
+  }, 2000);
   }
+  
+  headsUpDisplay() {
+    const ship = this.ship;
+    
+      let detailMessage = `Current Port : ${ship.itinerary.ports[currentPortIndex].name}`;
+
+      document.getElementById('headsUpDisplay').innerHTML = detailMessage;
+    }
   }
-  /* const portsElement = document.querySelector('#ports');
-  portsElement.style.width = '0px';
-  ports.forEach((port, index) => {
-    const newPortElement = document.createElement('div');
-    newPortElement.className = 'port';
-    newPortElement.dataset.portName = port.name;
-    newPortElement.dataset.portIndex = index;
-    portsElement.appendChild(newPortElement);
-    const portsElementWidth = parseInt(portsElement.style.width, 10);
-    portsElement.style.width = `${portsElementWidth + 256}px`; */
+
+
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = Controller;
