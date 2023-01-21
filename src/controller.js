@@ -3,8 +3,10 @@
     constructor(ship) {
       this.ship = ship;
       this.initialiseSea();
+      this.headsUpDisplay();
       document.querySelector('#sailButton').addEventListener('click', () => {
         this.setSail();
+
       });
     }
 
@@ -17,6 +19,8 @@
         }')`;
         backgroundIndex += 1;
       }, 1000);
+
+
     }
 
     renderPorts(ports) {
@@ -70,6 +74,9 @@
         if (shipLeft === nextPortElement.offsetLeft - 35) {
           ship.setSail();
           ship.dock();
+          document.querySelector('#sailButton').addEventListener('click', () => {
+          hud.removeChild(displayMessage)})
+          this.headsUpDisplay();
           this.renderMessage(`Welcome to ${ship.currentPort.name}`);
           clearInterval(sailInterval);
         }
@@ -90,13 +97,20 @@ renderMessage(message) {
   }
   
   headsUpDisplay() {
-    const ship = this.ship;
-    
-      let detailMessage = `Current Port : ${ship.itinerary.ports[currentPortIndex].name}`;
-
-      document.getElementById('headsUpDisplay').innerHTML = detailMessage;
-    }
+    const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
+    const currentPort = ship.currentPort.name
+    const displayMessage = document.createElement('div');
+    displayMessage.id = 'portInfo';
+    displayMessage.innerHTML = (`Current port: ${ship.currentPort.name} <br>
+    Next port: ${ship.itinerary.ports[currentPortIndex + 1].name}`)    
+    const hud = document.querySelector('#headsUpDisplay');
+    hud.appendChild(displayMessage);
+    //document.querySelector('#sailButton').addEventListener('click', () => {
+      //hud.removeChild(displayMessage)})
   }
+
+
+}
 
 
 
@@ -105,4 +119,34 @@ renderMessage(message) {
   } else {
     window.Controller = Controller;
   }
-})();
+})(); 
+
+
+/* SCRIPT CODE 
+
+<div id="headsUpDisplay"> 
+</div>
+<div id="viewport">
+  <div id="ports"></div>
+  <div id="ship"></div>
+  <button id="sailButton">Set Sail!</button>
+</div>
+<script src="./src/Controller.js"></script>
+<script src="./src/Itinerary.js"></script>
+<script src="./src/Port.js"></script>
+<script src="./src/cruiseShip.js"></script>
+
+<script>
+  const itinerary = new Intinerary([
+    new Port('Amsterdam'),
+    new Port('Cartagena'),
+    new Port('Barcelona'),
+  ]);
+  const ship = new CruiseShip(itinerary);
+  const controller = new Controller(ship);
+  controller.renderPorts(itinerary.ports);
+  controller.renderShip();
+  const message1 = 'TEST'
+  controller.headsUpDisplay(message1); 
+
+  */
