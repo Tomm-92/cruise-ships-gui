@@ -12,18 +12,25 @@
 
 <body>
   <div id = "headsUpDisplay">
-    <div>
-      <span id="current-port"></span>
-    </div>
-    <div>
-      <span id="next-port"></span>
-    </div>
+      <div>
+        <span id="current-port"></span>
+      </div>
+      <div>
+        <span id="next-port"></span>
+      </div>
   </div> 
   <div id="viewport">
     <div id="ports"></div>
     <div id="ship"></div>
     <button id="sailButton"> Set Sail! </button>
   </div>
+
+  <form id="addPorts">
+    <label for="portName">Add Port:</label><br>
+    <input type="text" id="portName" name="portName"><br>
+    <input id="submit" type="submit" value="Add">
+ </form>
+
 
 
 
@@ -37,8 +44,8 @@
     const itinerary = new Intinerary([
       new Port('Barcelona'),
       new Port('Cartagena'),
-      new Port('Nice'),
-      new Port('Liverpool'),
+      //new Port('Nice'),
+      //new Port('Liverpool'),
       new Port('Monaco')])
       const ship = new CruiseShip(itinerary);
       const controller = new Controller(ship);

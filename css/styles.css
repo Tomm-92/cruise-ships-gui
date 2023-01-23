@@ -91,6 +91,28 @@ body {
   text-align: left;
 }
 
+#addPorts {
+  background-color: white;
+  color:#222222;
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  margin: 10px;
+  padding: 10px;
+  border: solid 10px black;
+}
+
+#submit {
+  font-family: 'Press Start 2P', cursive;
+}
+
+#portName {
+  border: solid 1px black;
+  width: 80%;
+}
+
 
 
 

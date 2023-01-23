@@ -3,7 +3,10 @@
     constructor(ship) {
       this.ship = ship;
       this.initialiseSea();
+      if (ship.itinerary.ports.length > 0) {
       this.headsUpDisplay();
+      }
+      this.addPorts();
       document.querySelector('#sailButton').addEventListener('click', () => {
         this.setSail();
 
@@ -74,11 +77,9 @@
         if (shipLeft === nextPortElement.offsetLeft - 35) {
           ship.setSail();
           ship.dock();
-          document.querySelector('#sailButton').addEventListener('click', () => {
-          hud.removeChild(displayMessage)})
-          this.headsUpDisplay();
           this.renderMessage(`Welcome to ${ship.currentPort.name}`);
           clearInterval(sailInterval);
+          this.headsUpDisplay();
         }
         shipElement.style.left = `${shipLeft + 1}px`;
       }, 20);
@@ -97,22 +98,39 @@ renderMessage(message) {
   }
   
   headsUpDisplay() {
+    
+  if (this.ship.itinerary.ports.length >0 && this.ship.currentPort !== null) {
     const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
-    const currentPort = ship.currentPort.name
-    const displayMessage = document.createElement('div');
-    displayMessage.id = 'portInfo';
-    displayMessage.innerHTML = (`Current port: ${ship.currentPort.name} <br>
-    Next port: ${ship.itinerary.ports[currentPortIndex + 1].name}`)    
-    const hud = document.querySelector('#headsUpDisplay');
-    hud.appendChild(displayMessage);
-    //document.querySelector('#sailButton').addEventListener('click', () => {
-      //hud.removeChild(displayMessage)})
+    const nextPortIndex = currentPortIndex + 1;
+    let hudMessage = `Current Port: ${ship.itinerary.ports[currentPortIndex].name}`;
+    if (nextPortIndex < ship.itinerary.ports.length) {
+      hudMessage += `<br>Next Port: ${ship.itinerary.ports[nextPortIndex].name}`;
+    } else hudMessage = `Current Port: ${ship.itinerary.ports[currentPortIndex].name} <br> Next Port: End of the Line`;
+    document.getElementById('headsUpDisplay').innerHTML = hudMessage;
   }
 
+  }
+    
+  addPorts() {
 
-}
+    const form = document.querySelector('#addPorts')
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const value = form.querySelector('input[type="text"]').value;
+      console.log(value);
 
+  })
+    
+    /* const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort); 
+    const currentPortHud = document.querySelector('#current-port');
+    currentPortHud.innerHTML = (`Current port: ${ship.currentPort.name}`)
 
+    const nextPortIndex = ship.itinerary.ports[currentPortIndex + 1] 
+    const nextPortName = ship.itinerary.ports[currentPortIndex + 1].name
+    const nextPort = ship.itinerary.ports[currentPortIndex + 1] ? ship.itinerary.ports[currentPortIndex + 1].name : 'End of the Line'
+    const nextPortHud = document.querySelector('#next-port');
+    nextPortHud.innerHTML = (`Next port: ${nextPort}`) */
+  } }
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = Controller;
