@@ -113,11 +113,21 @@ renderMessage(message) {
     
   addPorts() {
 
-    const form = document.querySelector('#addPorts')
-    form.addEventListener('submit', (e) => {
+    const portsElement = document.querySelector('#addPorts')
+    portsElement.style.width = '0px';
+    const portsElementWidth = parseInt(portsElement.style.width, 10);
+    portsElement.style.width = `${portsElementWidth + 256}px`;
+    portsElement.addEventListener('submit', (e) => {
       e.preventDefault();
-      const value = form.querySelector('input[type="text"]').value;
+      const value = portsElement.querySelector('input[type="text"]').value;
       console.log(value);
+      const portValue = document.createElement('div')
+      portValue.className = 'port'
+      portValue.textContent = 'test'
+      portValue.dataset.portName = value
+      portValue.dataset.portIndex = ship.itinerary.ports.length + 1
+      const viewport = document.querySelector('#ports');
+      viewport.appendChild(portValue)
 
   })
     

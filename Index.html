@@ -27,7 +27,7 @@
 
   <form id="addPorts">
     <label for="portName">Add Port:</label><br>
-    <input type="text" id="portName" name="portName"><br>
+    <input type="text" id="portName" name="portName" placeholder="Port Name..."><br>
     <input id="submit" type="submit" value="Add">
  </form>
 
@@ -41,11 +41,11 @@
 
 
   <script>
-    const itinerary = new Intinerary([
+    const itinerary = new Intinerary([     
       new Port('Barcelona'),
       new Port('Cartagena'),
-      //new Port('Nice'),
-      //new Port('Liverpool'),
+      new Port('Nice'),
+      new Port('Liverpool'),
       new Port('Monaco')])
       const ship = new CruiseShip(itinerary);
       const controller = new Controller(ship);

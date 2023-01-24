@@ -110,8 +110,14 @@ body {
 
 #portName {
   border: solid 1px black;
-  width: 80%;
+  width: 90%;
+  text-align: center;
+  font-size: small;
+  margin: 15px;
+  padding: 5px;
 }
+
+
 
 
 
