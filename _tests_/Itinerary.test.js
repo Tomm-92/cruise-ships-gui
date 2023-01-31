@@ -1,4 +1,3 @@
-/* globals describe it expect */
 const Intinerary = require('../src/Itinerary');
 
 describe('Intinerary constructor function', () => {
@@ -10,6 +9,7 @@ describe('Intinerary constructor function', () => {
     const nice = jest.fn();
     const monaco = jest.fn();
     const intinerary = new Intinerary([nice, monaco]);
+    
     expect(intinerary.ports).toEqual([nice, monaco]);
   });
 });

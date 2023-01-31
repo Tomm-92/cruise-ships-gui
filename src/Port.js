@@ -17,7 +17,6 @@
         throw new Error('No ships with that name are currently docked');
       }
     }
-
   }
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = Port;

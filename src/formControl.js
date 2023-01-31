@@ -1,4 +1,5 @@
 const formElem = document.querySelector('#addPorts');
+
 formElem.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(formElem);

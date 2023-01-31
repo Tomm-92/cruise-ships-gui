@@ -25,6 +25,7 @@ describe('Ship', () => {
     itinerary = {
       ports: [cartagena, florence],
     };
+    
     ship = new CruiseShip(itinerary);
   });
 
